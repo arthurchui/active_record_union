@@ -52,11 +52,6 @@ module ActiveRecord
           raise ArgumentError.new("Cannot #{operation} relation with includes.")
         end
 
-        preload_relations = relations.select { |r| r.preload_values.any? }
-        if preload_relations.any?
-          raise ArgumentError.new("Cannot #{operation} relation with preload.")
-        end
-
         eager_load_relations = relations.select { |r| r.eager_load_values.any? }
         if eager_load_relations.any?
           raise ArgumentError.new("Cannot #{operation} relation with eager load.")

@@ -15,11 +15,6 @@ describe ActiveRecord::Relation do
       expect{User.includes(:posts).union(User.all)}.to raise_error(ArgumentError)
     end
 
-    it "explodes if asked to union a relation with preload values" do
-      expect{User.all.union(User.preload(:posts))}.to raise_error(ArgumentError)
-      expect{User.preload(:posts).union(User.all)}.to raise_error(ArgumentError)
-    end
-
     it "explodes if asked to union a relation with eager loading" do
       expect{User.all.union(User.eager_load(:posts))}.to raise_error(ArgumentError)
       expect{User.eager_load(:posts).union(User.all)}.to raise_error(ArgumentError)
